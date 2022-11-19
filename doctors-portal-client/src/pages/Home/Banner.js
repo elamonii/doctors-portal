@@ -1,5 +1,6 @@
 import React from 'react';
-import chair from '../../assets/images/chair.png';
+import BannerImage from '../components/BannerImage/BannerImage';
+import BannerTransparent from '../components/BannerImage/BannerTransparent';
 import PrimaryButton from '../components/Buttons/PrimaryButton';
 
 const Banner = () => {
@@ -7,16 +8,13 @@ const Banner = () => {
 < div className = "hero">
 
             {/* =====================BACKGROUND TRANSPARENT IMAGE====================== */}
-            <div class = "relative w-full h-full" > 
-                <div class="absolute inset-0 w-full h-full bg-white bg-opacity-90"></div>
-                <img src={chair} alt="chair"/>
-            </div>
+            <BannerTransparent></BannerTransparent>
             {/* =====================BACKGROUND TRANSPARENT IMAGE====================== */}
 
 
 
             <div className="hero-content flex-col lg:flex-row-reverse">
-                <img src={chair}  className="rounded-lg shadow-2xl w-[100%]" alt='' />
+                <BannerImage></BannerImage>
 
                 <div>
                     <h1 className="text-5xl font-bold">Your New Smile Starts Here</h1>
