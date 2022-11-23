@@ -7,6 +7,7 @@ const Login = () => {
 
     const handleLogin = data => {
         console.log(data);
+        console.log(errors);
     }
 
     return (
@@ -20,18 +21,26 @@ const Login = () => {
                         <input {...register("email", {
                             required:true
                         })}  
-                        type="text" className="input input-bordered w-full max-w-xs" />
-                        {errors.email && <span>This field is required</span>}
+                        type="email" className="input input-bordered w-full max-w-xs" />
+                        {errors.email && <span className='text-red-600 label-text'>{errors.email.message}</span>}
                         
                     </div>
 
                     <div className="form-control w-full max-w-xs">
                         <label className="label"><span className="label-text">Password</span></label>
                         <input {...register("password", {
-                            required:true
+                            required:true, 
+                            minLength: {
+                                value:6,
+                                message: 'Password at least 6 character long'
+                            }, 
+                            maxLength: {
+                                value:20,
+                                message: 'Password length 20 character max'
+                            } 
                         })} type="password" className="input input-bordered w-full max-w-xs" />
-                        {errors.password && <span>This field is required</span>}
                         <label className="label"><span className="label-text-alt">Forgot password?</span></label>
+                        {errors.password && <span className='text-red-600 label-text'>{errors.password.message}</span>}
                     </div>
 
                     {/* <p>{data}</p> */}

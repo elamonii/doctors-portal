@@ -7,7 +7,7 @@ const Info = () => {
     return(
     
     
-    <div class = "grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4" >
+    <div className= "grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4" >
 
         <div className = "card card-side bg-primary shadow-xl px-6" > 
             <figure > 
