@@ -1,13 +1,39 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
+    // =============================SIGN IN
+    const {signIn} = useContext(AuthContext);
+
+    // =============================HANDLE SHOW ERROR
+    const [loginError, setLoginError] = useState('');
+
+    // =============================Private route Navigation to desired destination
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
+
+
     const handleLogin = data => {
         console.log(data);
-        console.log(errors);
+        setLoginError('');
+
+        signIn(data.email, data.password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+
+            // ================private route login
+            navigate(from, {replace:true});
+        })
+        .catch(error => {
+            setLoginError(error.message);
+            console.log(error.message);
+        })
     }
 
     return (
@@ -45,6 +71,15 @@ const Login = () => {
 
                     {/* <p>{data}</p> */}
                     <input type="submit" className="btn btn-accent w-full max-w-xs mt-4 text-white uppercase" value="Login" />
+
+
+                    <div>
+                        {
+                            loginError && <p className='text-red-600 font-bold'>{loginError}</p>
+                        }
+                    </div>
+
+
                 </form>
                 <p className='text-secondary label-text'>New to Doctors Portal?? <Link to={'/signup'}>Create New Account</Link></p>
                 <div className="divider">OR</div>
