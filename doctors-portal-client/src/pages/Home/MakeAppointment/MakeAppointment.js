@@ -11,9 +11,9 @@ const MakeAppointment = () => {
              }}
         >
             <div className="hero">
-                <div className="hero-content flex-col lg:flex-row">
+                <div className="hero-content flex-col md:flex-row lg:flex-row">
                     {/* <div className='lg:w-1/2 md:w-1/2 w-full'> */}
-                        <img src={doctor} className="lg:w-1/2 md:w-1/2 -mt-32 -mb-4 hidden lg:block md:block" alt='' />
+                        <img src={doctor} className="lg:w-1/2 md:w-1/2 -mt-32 md:-mt-48 -mb-4 hidden lg:block md:block" alt='' />
                     {/* </div> */}
                     
                     <div className='lg:w-1/2 md:w-1/2'>
